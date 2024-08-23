@@ -34,6 +34,8 @@ This is a products APP built using [React.js](https://react.dev/), [Vite](https:
 ![alt text](image-2.png)
 
 ![alt text](image-3.png)
+
 ## Roadmap
 
 - Unit tests;
+- Pagination;
