@@ -1,8 +1,6 @@
-import axios from "axios";
 import { Product } from "../components/ProductCard/ProductCard";
 import { Filters } from "../shared/interfaces";
-
-const BASE_URL_LOCAL = "http://localhost:3000";
+import { axiosInstance } from "../api/api";
 
 interface ApiResponse<T> {
   message: string;
@@ -32,19 +30,18 @@ export const list = (filters?: Filters) => {
     params.append("name", filters.name);
   }
 
-  return axios.get<ApiResponse<Product>>(`${BASE_URL_LOCAL}/products`, {
+  return axiosInstance.get<ApiResponse<Product>>(`/products`, {
     params,
   });
 };
 
 export const update = (product: Product) =>
-  axios.put(`${BASE_URL_LOCAL}/products/${product._id}`, product);
+  axiosInstance.put(`/products/${product._id}`, product);
 
-export const remove = (id: string) =>
-  axios.delete(`${BASE_URL_LOCAL}/products/${id}`);
+export const remove = (id: string) => axiosInstance.delete(`/products/${id}`);
 
 export const getBrands = () =>
-  axios.get<ApiResponse<string>>(`${BASE_URL_LOCAL}/brands`);
+  axiosInstance.get<ApiResponse<string>>(`/brands`);
 
 export const getCategories = () =>
-  axios.get<ApiResponse<string>>(`${BASE_URL_LOCAL}/categories`);
+  axiosInstance.get<ApiResponse<string>>(`/categories`);
